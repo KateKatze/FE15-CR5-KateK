@@ -16,18 +16,17 @@ class Animal {
     startCard() {
         return `
         <div class="col">
-        <div class="card h-100" style="width: 18rem;">
-        <img src="${this.img}>
-        <div class="card-body">
-        <h5>${this.name}</h5>
-        <hr>`;
+            <div class="card">
+                <img class="card-img-top" src="${this.img}" alt="Animal">`;
     }
     endCard() {
         return `
-            <p class="card-text"> Age: ${this.age} Months <br> Gender: ${this.gender} T <br> It´s ${this.size} size!</p>
-            <p class="vaccine">Vaccine done: ${this.vaccine}</p>
+                <div class="card-body">
+                    <h5 class="card-title">${this.name}</h5>
+                    <p class="card-text"> Age: ${this.age} Months <br> Gender: ${this.gender} T <br> It has a ${this.size} size!</p>
+                    <p class="vaccine">Vaccine done: ${this.vaccine}</p>
+                </div>
             </div>
-        </div>
         </div>`;
     }
     displayCard() {
@@ -44,8 +43,10 @@ class Cat extends Animal {
     startCard() {
         return `
             ${super.startCard()}
+            <div class="card-text">
                 <p class="card-text">Breed: ${this.breed} <br> Fur color: ${this.furColor} <br></p>
-                <a href="${this.source}">Read more about breed</a>`;
+                <a href="${this.source}">Read more about breed</a>
+            </div>`;
     }
 }
 class Dog extends Animal {
@@ -57,22 +58,24 @@ class Dog extends Animal {
     startCard() {
         return `
             ${super.startCard()}
-                <p class="card-text">Family: ${this.family} <br> I´m trained: ${this.trainingSkills}</p>`;
+            <div class="card-text">
+                <p class="card-text">Family: ${this.family} <br> I´m trained: ${this.trainingSkills}</p>
+            </div>`;
     }
 }
 let animalGroup = [];
 // name, age, gender, size, vaccine, img
-new Animal("Kitty", 24, "Female", "Big", "Yes", "img/bigcat.jpg");
-new Animal("Ben", 7, "Male", "Medium", "No", "https://www.pexels.com/photo/grey-kitten-on-floor-774731/");
-new Animal("Lily", 3, "Female", "Small", "Yes", "https://www.pexels.com/photo/photo-of-grey-tabby-kitten-lying-down-2558605/");
+new Animal("Kitty", 24, "Female", "Big", "Yes", "img/hamster.jpg");
+new Animal("Ben", 7, "Male", "Medium", "No", "img/rabbit.jpg");
+new Animal("Lily", 3, "Female", "Small", "Yes", "img/rat.jpg");
 // name, age, gender, size, vaccine, img, breed, furColor, source
-new Cat("Kitty", 24, "Female", "Big", "Yes", "https://www.pexels.com/photo/selective-focus-photography-of-orange-tabby-cat-1170986/", "No breed", "Red", "https://commons.wikimedia.org/wiki/Category:Red_cats");
-new Cat("Ben", 7, "Male", "Medium", "No", "https://www.pexels.com/photo/grey-kitten-on-floor-774731/", "No breed", "Red", "https://commons.wikimedia.org/wiki/Category:Red_cats");
-new Cat("Lily", 3, "Female", "Small", "Yes", "https://www.pexels.com/photo/photo-of-grey-tabby-kitten-lying-down-2558605/", "No breed", "Red", "https://commons.wikimedia.org/wiki/Category:Red_cats");
+new Cat("Kitty", 24, "Female", "Big", "Yes", "img/bigcat.jpg", "No breed", "Red", "https://commons.wikimedia.org/wiki/Category:Red_cats");
+new Cat("Ben", 7, "Male", "Medium", "No", "img/mediumcat.jpg", "No breed", "Red", "https://commons.wikimedia.org/wiki/Category:Red_cats");
+new Cat("Lily", 3, "Female", "Small", "Yes", "img/smallcat.jpg", "No breed", "Red", "https://commons.wikimedia.org/wiki/Category:Red_cats");
 // name, age, gender, size, vaccine, img, family, trainingSkills
-new Dog("Doggi", 5, "Female", "Medium", "Yes", "https://www.pexels.com/photo/selective-focus-photography-of-orange-tabby-cat-1170986/", "No breed", "Trained");
-new Dog("Mimi", 5, "Female", "Medium", "Yes", "https://www.pexels.com/photo/selective-focus-photography-of-orange-tabby-cat-1170986/", "No breed", "Trained");
-new Dog("Bark", 5, "Female", "Medium", "Yes", "https://www.pexels.com/photo/selective-focus-photography-of-orange-tabby-cat-1170986/", "No breed", "Trained");
+new Dog("Doggi", 5, "Female", "Medium", "Yes", "img/smalldog.jpg", "No breed", "Trained");
+new Dog("Mimi", 5, "Female", "Medium", "Yes", "img/mediumdog.jpg", "No breed", "Trained");
+new Dog("Bark", 5, "Female", "Medium", "Yes", "img/bigdog.jpg", "No breed", "Trained");
 // (document.getElementById("row") as HTMLElement).innerHTML = animal1.displaycard();
 // (document.getElementById("row") as HTMLElement).innerHTML += animal2.displaycard();
 // (document.getElementById("row") as HTMLElement).innerHTML += animal3.displaycard();
