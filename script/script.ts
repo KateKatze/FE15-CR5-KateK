@@ -3,10 +3,10 @@ class Animal {
     age: number;
     gender: string;
     size: string;
-    vaccine: string;
+    vaccine?: boolean;
     img: string;
     
-    constructor(name: string, age: number, gender: string, size: string, vaccine: string, img: string){
+    constructor(name: string, age: number, gender: string, size: string, vaccine: boolean, img: string){
             this.name = name;
             this.age = age;
             this.gender = gender;
@@ -15,11 +15,6 @@ class Animal {
             this.img = img;
             animalGroup.push(this);
         }
-
-        // change here for vaccination colour
-    // priceSum(){
-    //     return `${this.year*2}`
-    // }
 
     startCard(){
         return `
@@ -33,7 +28,7 @@ class Animal {
                     <hr>
                     <p class="card-text">Gender: ${this.gender} <br> It has a ${this.size} size!</p>
                     <hr>
-                    <p class="card-text">Vaccine done: <p class="vaccine"> ${this.vaccine}</p>
+                    <p class="card-text">Vaccine done: <p class="bg-${this.vaccine?"success":"danger"} text-center"> ${this.vaccine}</p></p>
                 `
     }
 
@@ -47,14 +42,13 @@ class Animal {
     displayCard(){
         return this.startCard() + this.endCard()
     }
-
 }
 
 class Cat extends Animal {
     breed: string;
     furColor: string;
     source: string;
-    constructor(name: string, age: number, gender: string, size: string, vaccine: string, img: string, breed: string, furColor: string, source: string){
+    constructor(name: string, age: number, gender: string, size: string, vaccine: boolean, img: string, breed: string, furColor: string, source: string){
             super(name, age, gender, size, vaccine, img)
             this.breed = breed;
             this.furColor = furColor;
@@ -76,7 +70,7 @@ class Dog extends Animal {
     family: string;
     trainingSkills: string;
 
-    constructor(name: string, age: number, gender: string, size: string, vaccine: string, img: string, family: string, trainingSkills: string){
+    constructor(name: string, age: number, gender: string, size: string, vaccine: boolean, img: string, family: string, trainingSkills: string){
             super(name, age, gender, size, vaccine, img)
             this.family = family;
             this.trainingSkills = trainingSkills;
@@ -92,45 +86,23 @@ class Dog extends Animal {
         }        
 }
 
-
 let animalGroup : Array<Animal>=[];
 
-// name, age, gender, size, vaccine, img
+new Animal ("Donut", 5, "Male", "big", true, "img/hamster.jpg");
+new Animal ("Fluffy", 3, "Male", "medium", true, "img/rabbit.jpg");
+new Animal ("Penny", 1, "Female", "small", false, "img/rat.jpg");
 
-new Animal ("Donut", 5, "Male", "big", "No", "img/hamster.jpg");
-new Animal ("Fluffy", 3, "Male", "medium", "Yes", "img/rabbit.jpg");
-new Animal ("Penny", 1, "Female", "small", "No", "img/rat.jpg");
+new Cat ("Kitty", 24, "Female", "big", true, "img/bigcat.jpg", "Mixed", "Red", "https://commons.wikimedia.org/wiki/Category:Red_cats");
+new Cat ("Ben", 7, "Male", "medium", false, "img/mediumcat.jpg", "British shorthair", "Gray", "https://de.wikipedia.org/wiki/Britisch_Kurzhaar");
+new Cat ("Lily", 3, "Female", "small", true, "img/smallcat.jpg", "British longhair", "Tabby", "https://de.wikipedia.org/wiki/Britisch_Langhaar");
 
-// name, age, gender, size, vaccine, img, breed, furColor, source
-
-new Cat ("Kitty", 24, "Female", "big", "Yes", "img/bigcat.jpg", "Mixed", "Red", "https://commons.wikimedia.org/wiki/Category:Red_cats");
-new Cat ("Ben", 7, "Male", "medium", "No", "img/mediumcat.jpg", "British shorthair", "Gray", "https://de.wikipedia.org/wiki/Britisch_Kurzhaar");
-new Cat ("Lily", 3, "Female", "small", "Yes", "img/smallcat.jpg", "British longhair", "Tabby", "https://de.wikipedia.org/wiki/Britisch_Langhaar");
-
-// name, age, gender, size, vaccine, img, family, trainingSkills
-
-new Dog ("Doggi", 32, "Female", "small", "Yes", "img/smalldog.jpg", "Bolognese", "Trained");
-new Dog ("Mimi", 5, "Female", "medium", "No", "img/mediumdog.jpg", "Husky", "Not trained");
-new Dog ("Bark", 9, "Male", "big", "Yes", "img/bigdog.jpg", "Shiba Inu", "Trained");
-
-// (document.getElementById("row") as HTMLElement).innerHTML = animal1.displaycard();
-// (document.getElementById("row") as HTMLElement).innerHTML += animal2.displaycard();
-// (document.getElementById("row") as HTMLElement).innerHTML += animal3.displaycard();
+new Dog ("Doggi", 32, "Female", "small", true, "img/smalldog.jpg", "Bolognese", "Trained");
+new Dog ("Mimi", 5, "Female", "medium", false, "img/mediumdog.jpg", "Husky", "Not trained");
+new Dog ("Bark", 9, "Male", "big", true, "img/bigdog.jpg", "Shiba Inu", "Trained");
 
 animalGroup.forEach((val) => {
     (document.getElementById("row") as HTMLElement).innerHTML += val.displayCard();
-
 })
-
-// change here for vaccine colour
-
-// var prices = (document.getElementsByClassName("showprice"));
-// for (let ind in prices){
-//     prices[ind].addEventListener("click", function (){
-//         (document.getElementsByClassName("prices1")[ind] as HTMLElement).innerHTML = animalGroup[ind].priceSum(); 
-//     })
-// }
-
 
 // sort button
 
