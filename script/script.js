@@ -1,6 +1,8 @@
 "use strict";
+// Parent class
 class Animal {
     constructor(name, age, gender, size, vaccine, img) {
+        this.order = false;
         this.name = name;
         this.age = age;
         this.gender = gender;
@@ -21,8 +23,10 @@ class Animal {
                     <hr>
                     <p class="card-text">Gender: ${this.gender} <br> I have a ${this.size} size!</p>
                     <hr>
-                    <p class="card-text">Vaccine done: <p class="bg-${this.vaccine ? "success" : "danger"} text-center p-2"> ${this.vaccine}</p></p>
-                `;
+                    <p class="card-text">Vaccine done: 
+                    <p class="bg-${this.vaccine ? "success" : "danger"} text-center p-2"> ${this.vaccine}
+                    </p>
+                    </p>`;
     }
     endCard() {
         return `
@@ -34,6 +38,7 @@ class Animal {
         return this.startCard() + this.endCard();
     }
 }
+// Child class 1
 class Cat extends Animal {
     constructor(name, age, gender, size, vaccine, img, breed, furColor, source) {
         super(name, age, gender, size, vaccine, img);
@@ -51,6 +56,7 @@ class Cat extends Animal {
             </div>`;
     }
 }
+// Child class 2
 class Dog extends Animal {
     constructor(name, age, gender, size, vaccine, img, family, trainingSkills) {
         super(name, age, gender, size, vaccine, img);
@@ -62,27 +68,38 @@ class Dog extends Animal {
             ${super.startCard()}
             <hr>
             <div class="card-text">
-                <p>Breed: ${this.family} <br> I´m trained: ${this.trainingSkills}</p>
+                <p>Breed: ${this.family} <br> I am trained: ${this.trainingSkills}</p>
             </div>`;
     }
 }
+// Creating empty array 
 let animalGroup = [];
+// Info for parent class
 new Animal("Donut", 5, "Male", "big", true, "img/hamster.jpg");
 new Animal("Fluffy", 3, "Male", "medium", true, "img/rabbit.jpg");
 new Animal("Penny", 1, "Female", "small", false, "img/rat.jpg");
+// Info for 1st child class
 new Cat("Kitty", 24, "Female", "big", true, "img/bigcat.jpg", "Mixed", "Red", "https://commons.wikimedia.org/wiki/Category:Red_cats");
 new Cat("Ben", 7, "Male", "medium", false, "img/mediumcat.jpg", "British shorthair", "Gray", "https://de.wikipedia.org/wiki/Britisch_Kurzhaar");
 new Cat("Lily", 3, "Female", "small", true, "img/smallcat.jpg", "British longhair", "Tabby", "https://de.wikipedia.org/wiki/Britisch_Langhaar");
+// Info for 2nd child class
 new Dog("Doggi", 32, "Female", "small", true, "img/smalldog.jpg", "Bolognese", "Trained");
 new Dog("Mimi", 5, "Female", "medium", false, "img/mediumdog.jpg", "Husky", "Not trained");
 new Dog("Bark", 9, "Male", "big", true, "img/bigdog.jpg", "Shiba Inu", "Trained");
-animalGroup.forEach((val) => {
-    document.getElementById("row").innerHTML += val.displayCard();
-});
-// sort button
-// let agesort = (document.getElementsByClassName("agesort"));
-// document.getElementsByClassName("sortanim")[0].addEventListener("click", sortImportance);
-// function sortImportance() {
-//     agesort.sort((a: number, b:number) => b.age - a.age);
-//     (document.getElementById("row") as HTMLElement).innerHTML = "";
-// }
+//  Sorting 
+document.getElementById("sortanim").addEventListener("click", sortAnim);
+function sortAnim() {
+    animalGroup.sort(function (a, b) {
+        return b.age - a.age;
+    });
+    document.getElementById("row").innerHTML = "";
+    printContent();
+}
+;
+// Making cards 
+function printContent() {
+    animalGroup.forEach((val) => {
+        document.getElementById("row").innerHTML += val.displayCard();
+    });
+}
+printContent();
