@@ -1,31 +1,31 @@
 "use strict";
-class vehicles {
-    constructor(brand, model, img, year, weight, eAuto) {
-        this.brand = brand;
-        this.model = model;
+class Animal {
+    constructor(name, age, gender, size, vaccine, img) {
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.size = size;
+        this.vaccine = vaccine;
         this.img = img;
-        this.year = year;
-        this.weight = weight;
-        this.eAuto = eAuto;
-        carGroup.push(this);
+        animalGroup.push(this);
     }
-    priceSum() {
-        return `${this.year * 2}`;
-    }
+    // change here for vaccination colour
+    // priceSum(){
+    //     return `${this.year*2}`
+    // }
     startCard() {
         return `
         <div class="col">
         <div class="card h-100" style="width: 18rem;">
-        <img src="${this.img}" class="card-img-top" alt="${this.img}">
+        <img src="${this.img}>
         <div class="card-body">
-        <h5>${this.brand} ${this.model}</h5>`;
+        <h5>${this.name}</h5>
+        <hr>`;
     }
     endCard() {
         return `
-            
-            <p class="card-text"> Year: ${this.year} <br> Weight: ${this.weight} T <br> e-Auto: ${this.eAuto}</p>
-            <button class="showprice btn btn-primary">Buy now!</button>
-            <p class="prices1 mt-2"></p>
+            <p class="card-text"> Age: ${this.age} Months <br> Gender: ${this.gender} T <br> It´s ${this.size} size!</p>
+            <p class="vaccine">Vaccine done: ${this.vaccine}</p>
             </div>
         </div>
         </div>`;
@@ -34,50 +34,55 @@ class vehicles {
         return this.startCard() + this.endCard();
     }
 }
-class motorbike extends vehicles {
-    constructor(brand, model, img, year, weight, eAuto, type, trunk, maxSpeed) {
-        super(brand, model, img, year, weight, eAuto);
-        this.type = type;
-        this.trunk = trunk;
-        this.maxSpeed = maxSpeed;
+class Cat extends Animal {
+    constructor(name, age, gender, size, vaccine, img, breed, furColor, source) {
+        super(name, age, gender, size, vaccine, img);
+        this.breed = breed;
+        this.furColor = furColor;
+        this.source = source;
     }
     startCard() {
         return `
             ${super.startCard()}
-                <p class="card-text">Type: ${this.type} <br> Trunk: ${this.trunk} <br> Max.Speed: ${this.maxSpeed}</p>`;
+                <p class="card-text">Breed: ${this.breed} <br> Fur color: ${this.furColor} <br></p>
+                <a href="${this.source}">Read more about breed</a>`;
     }
 }
-class trucks extends vehicles {
-    constructor(brand, model, img, year, weight, eAuto, type, trunk, maxSpeed, fuelType, numberOfSeats) {
-        super(brand, model, img, year, weight, eAuto);
-        this.fuelType = fuelType;
-        this.numberOfSeats = numberOfSeats;
+class Dog extends Animal {
+    constructor(name, age, gender, size, vaccine, img, family, trainingSkills) {
+        super(name, age, gender, size, vaccine, img);
+        this.family = family;
+        this.trainingSkills = trainingSkills;
     }
     startCard() {
         return `
             ${super.startCard()}
-                <p class="card-text">Fuel Type: ${this.fuelType} <br> Number of seats: ${this.numberOfSeats}</p>`;
+                <p class="card-text">Family: ${this.family} <br> I´m trained: ${this.trainingSkills}</p>`;
     }
 }
-let carGroup = [];
-new vehicles("Tesla", "X", "https://www.autozeitung.de/assets/field/image/tesla-model-x-facelift-2021-01.jpg", 2019, 2, true);
-new vehicles("Honda", "Jazz", "https://cdn.motor1.com/images/mgl/M70W4/s1/2020-honda-fit.webp", 2020, 3, false);
-new vehicles("KIA", "Sportage", "https://cdn.motor1.com/images/mgl/MBlPE/s1/2022-kia-sportage-front-quarter.jpg", 2021, 5, true);
-new motorbike("Honda", "Shadow", "https://cdn.pixabay.com/photo/2016/04/07/06/53/bmw-1313343__340.jpg", 1992, 262, false, "Sport", "No", 100);
-new motorbike("Yamaha", "Fastboy", "https://cdn.pixabay.com/photo/2016/04/07/06/53/bmw-1313343__340.jpg", 2021, 262, false, "Comfort", "yes", 110);
-new motorbike("Kawasaki", "Ninja", "https://cdn.pixabay.com/photo/2016/04/07/06/53/bmw-1313343__340.jpg", 1987, 262, false, "Sport", "No", 300);
-new trucks("Ford", "Dirt", "https://cdn.pixabay.com/photo/2015/01/17/22/17/truck-602567__340.jpg", 1999, 4, false, "Big", "yes", 120, "Benzin", 5);
-new trucks("Ford", "Dirt", "https://cdn.pixabay.com/photo/2015/01/17/22/17/truck-602567__340.jpg", 1999, 4, false, "Big", "yes", 120, "Benzin", 5);
-new trucks("Ford", "Dirt", "https://cdn.pixabay.com/photo/2015/01/17/22/17/truck-602567__340.jpg", 1999, 4, false, "Big", "yes", 120, "Benzin", 5);
-// (document.getElementById("row") as HTMLElement).innerHTML = vehicle1.displaycard();
-// (document.getElementById("row") as HTMLElement).innerHTML += vehicle2.displaycard();
-// (document.getElementById("row") as HTMLElement).innerHTML += vehicle3.displaycard();
-carGroup.forEach((val) => {
+let animalGroup = [];
+// name, age, gender, size, vaccine, img
+new Animal("Kitty", 24, "Female", "Big", "Yes", "img/bigcat.jpg");
+new Animal("Ben", 7, "Male", "Medium", "No", "https://www.pexels.com/photo/grey-kitten-on-floor-774731/");
+new Animal("Lily", 3, "Female", "Small", "Yes", "https://www.pexels.com/photo/photo-of-grey-tabby-kitten-lying-down-2558605/");
+// name, age, gender, size, vaccine, img, breed, furColor, source
+new Cat("Kitty", 24, "Female", "Big", "Yes", "https://www.pexels.com/photo/selective-focus-photography-of-orange-tabby-cat-1170986/", "No breed", "Red", "https://commons.wikimedia.org/wiki/Category:Red_cats");
+new Cat("Ben", 7, "Male", "Medium", "No", "https://www.pexels.com/photo/grey-kitten-on-floor-774731/", "No breed", "Red", "https://commons.wikimedia.org/wiki/Category:Red_cats");
+new Cat("Lily", 3, "Female", "Small", "Yes", "https://www.pexels.com/photo/photo-of-grey-tabby-kitten-lying-down-2558605/", "No breed", "Red", "https://commons.wikimedia.org/wiki/Category:Red_cats");
+// name, age, gender, size, vaccine, img, family, trainingSkills
+new Dog("Doggi", 5, "Female", "Medium", "Yes", "https://www.pexels.com/photo/selective-focus-photography-of-orange-tabby-cat-1170986/", "No breed", "Trained");
+new Dog("Mimi", 5, "Female", "Medium", "Yes", "https://www.pexels.com/photo/selective-focus-photography-of-orange-tabby-cat-1170986/", "No breed", "Trained");
+new Dog("Bark", 5, "Female", "Medium", "Yes", "https://www.pexels.com/photo/selective-focus-photography-of-orange-tabby-cat-1170986/", "No breed", "Trained");
+// (document.getElementById("row") as HTMLElement).innerHTML = animal1.displaycard();
+// (document.getElementById("row") as HTMLElement).innerHTML += animal2.displaycard();
+// (document.getElementById("row") as HTMLElement).innerHTML += animal3.displaycard();
+animalGroup.forEach((val) => {
     document.getElementById("row").innerHTML += val.displayCard();
 });
-var prices = (document.getElementsByClassName("showprice"));
-for (let ind in prices) {
-    prices[ind].addEventListener("click", function () {
-        document.getElementsByClassName("prices1")[ind].innerHTML = carGroup[ind].priceSum();
-    });
-}
+// change here for vaccine colour
+// var prices = (document.getElementsByClassName("showprice"));
+// for (let ind in prices){
+//     prices[ind].addEventListener("click", function (){
+//         (document.getElementsByClassName("prices1")[ind] as HTMLElement).innerHTML = animalGroup[ind].priceSum(); 
+//     })
+// }
