@@ -17,14 +17,19 @@ class Animal {
         return `
         <div class="col">
             <div class="card">
-                <img class="card-img-top" src="${this.img}" alt="Animal">`;
+                <img class="card-img-top disappsm" src="${this.img}" alt="Animal">
+                <div class="card-body">
+                    <h4 class="text-uppercase font-weight-bold text-center p-2">${this.name}</h4>
+                    <hr>
+                    <p class="card-text">Age (months): <p class="agesort">${this.age}</p></p>
+                    <hr>
+                    <p class="card-text">Gender: ${this.gender} <br> It has a ${this.size} size!</p>
+                    <hr>
+                    <p class="card-text">Vaccine done: <p class="vaccine"> ${this.vaccine}</p>
+                `;
     }
     endCard() {
         return `
-                <div class="card-body">
-                    <h5 class="card-title">${this.name}</h5>
-                    <p class="card-text"> Age: ${this.age} Months <br> Gender: ${this.gender} T <br> It has a ${this.size} size!</p>
-                    <p class="vaccine">Vaccine done: ${this.vaccine}</p>
                 </div>
             </div>
         </div>`;
@@ -43,9 +48,10 @@ class Cat extends Animal {
     startCard() {
         return `
             ${super.startCard()}
+            <hr>
             <div class="card-text">
-                <p class="card-text">Breed: ${this.breed} <br> Fur color: ${this.furColor} <br></p>
-                <a href="${this.source}">Read more about breed</a>
+                <p>Breed: ${this.breed} <br> Fur color: ${this.furColor} <br></p>
+                <a href="${this.source}" class="catlink">Read more about breed</a>
             </div>`;
     }
 }
@@ -58,24 +64,25 @@ class Dog extends Animal {
     startCard() {
         return `
             ${super.startCard()}
+            <hr>
             <div class="card-text">
-                <p class="card-text">Family: ${this.family} <br> I´m trained: ${this.trainingSkills}</p>
+                <p>Breed: ${this.family} <br> I´m trained: ${this.trainingSkills}</p>
             </div>`;
     }
 }
 let animalGroup = [];
 // name, age, gender, size, vaccine, img
-new Animal("Kitty", 24, "Female", "Big", "Yes", "img/hamster.jpg");
-new Animal("Ben", 7, "Male", "Medium", "No", "img/rabbit.jpg");
-new Animal("Lily", 3, "Female", "Small", "Yes", "img/rat.jpg");
+new Animal("Donut", 5, "Male", "big", "No", "img/hamster.jpg");
+new Animal("Fluffy", 3, "Male", "medium", "Yes", "img/rabbit.jpg");
+new Animal("Penny", 1, "Female", "small", "No", "img/rat.jpg");
 // name, age, gender, size, vaccine, img, breed, furColor, source
-new Cat("Kitty", 24, "Female", "Big", "Yes", "img/bigcat.jpg", "No breed", "Red", "https://commons.wikimedia.org/wiki/Category:Red_cats");
-new Cat("Ben", 7, "Male", "Medium", "No", "img/mediumcat.jpg", "No breed", "Red", "https://commons.wikimedia.org/wiki/Category:Red_cats");
-new Cat("Lily", 3, "Female", "Small", "Yes", "img/smallcat.jpg", "No breed", "Red", "https://commons.wikimedia.org/wiki/Category:Red_cats");
+new Cat("Kitty", 24, "Female", "big", "Yes", "img/bigcat.jpg", "Mixed", "Red", "https://commons.wikimedia.org/wiki/Category:Red_cats");
+new Cat("Ben", 7, "Male", "medium", "No", "img/mediumcat.jpg", "British shorthair", "Gray", "https://de.wikipedia.org/wiki/Britisch_Kurzhaar");
+new Cat("Lily", 3, "Female", "small", "Yes", "img/smallcat.jpg", "British longhair", "Tabby", "https://de.wikipedia.org/wiki/Britisch_Langhaar");
 // name, age, gender, size, vaccine, img, family, trainingSkills
-new Dog("Doggi", 5, "Female", "Medium", "Yes", "img/smalldog.jpg", "No breed", "Trained");
-new Dog("Mimi", 5, "Female", "Medium", "Yes", "img/mediumdog.jpg", "No breed", "Trained");
-new Dog("Bark", 5, "Female", "Medium", "Yes", "img/bigdog.jpg", "No breed", "Trained");
+new Dog("Doggi", 32, "Female", "small", "Yes", "img/smalldog.jpg", "Bolognese", "Trained");
+new Dog("Mimi", 5, "Female", "medium", "No", "img/mediumdog.jpg", "Husky", "Not trained");
+new Dog("Bark", 9, "Male", "big", "Yes", "img/bigdog.jpg", "Shiba Inu", "Trained");
 // (document.getElementById("row") as HTMLElement).innerHTML = animal1.displaycard();
 // (document.getElementById("row") as HTMLElement).innerHTML += animal2.displaycard();
 // (document.getElementById("row") as HTMLElement).innerHTML += animal3.displaycard();
@@ -88,4 +95,11 @@ animalGroup.forEach((val) => {
 //     prices[ind].addEventListener("click", function (){
 //         (document.getElementsByClassName("prices1")[ind] as HTMLElement).innerHTML = animalGroup[ind].priceSum(); 
 //     })
+// }
+// sort button
+// let agesort = (document.getElementsByClassName("agesort"));
+// document.getElementsByClassName("sortanim")[0].addEventListener("click", sortImportance);
+// function sortImportance() {
+//     agesort.sort((a: number, b:number) => b.age - a.age);
+//     (document.getElementById("row") as HTMLElement).innerHTML = "";
 // }

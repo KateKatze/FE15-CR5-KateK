@@ -64,3 +64,20 @@ body {
 
 
 /* Swiper ends */
+
+
+/* Link cards */
+
+a.catlink {
+    text-decoration: none;
+    color: green;
+}
+
+
+/* Mediaquery for the pictures (sm devices) */
+
+@media screen and (max-width: 576px) {
+    .disappsm {
+        display: none !important;
+    }
+}
