@@ -26,9 +26,9 @@ class Animal {
                     <hr>
                     <p class="card-text">Age (months): <p class="agesort">${this.age}</p></p>
                     <hr>
-                    <p class="card-text">Gender: ${this.gender} <br> It has a ${this.size} size!</p>
+                    <p class="card-text">Gender: ${this.gender} <br> I have a ${this.size} size!</p>
                     <hr>
-                    <p class="card-text">Vaccine done: <p class="bg-${this.vaccine?"success":"danger"} text-center"> ${this.vaccine}</p></p>
+                    <p class="card-text">Vaccine done: <p class="bg-${this.vaccine?"success":"danger"} text-center p-2"> ${this.vaccine}</p></p>
                 `
     }
 
