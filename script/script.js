@@ -90,6 +90,16 @@ new Dog("Bark", 9, "Male", "big", true, "img/bigdog.jpg", "Shiba Inu", "Trained"
 document.getElementById("sortanim").addEventListener("click", sortAnim);
 function sortAnim() {
     animalGroup.sort(function (a, b) {
+        return a.age - b.age;
+    });
+    document.getElementById("row").innerHTML = "";
+    printContent();
+}
+;
+// Sorting 2
+document.getElementById("sortanimals").addEventListener("click", sortAnimals);
+function sortAnimals() {
+    animalGroup.sort(function (a, b) {
         return b.age - a.age;
     });
     document.getElementById("row").innerHTML = "";

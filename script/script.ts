@@ -34,18 +34,18 @@ class Animal {
                     <p class="card-text">Vaccine done: 
                     <p class="bg-${this.vaccine?"success":"danger"} text-center p-2"> ${this.vaccine}
                     </p>
-                    </p>`
+                    </p>`;
     }
 
     endCard(){
         return `
                 </div>
             </div>
-        </div>`
+        </div>`;
     }
 
     displayCard(){
-        return this.startCard() + this.endCard()
+        return this.startCard() + this.endCard();
     }
 }
 
@@ -69,7 +69,7 @@ class Cat extends Animal {
             <div class="card-text">
                 <p>Breed: ${this.breed} <br> Fur color: ${this.furColor} <br></p>
                 <a href="${this.source}" class="catlink">Read more about breed</a>
-            </div>`
+            </div>`;
         }         
 }
 
@@ -91,7 +91,7 @@ class Dog extends Animal {
             <hr>
             <div class="card-text">
                 <p>Breed: ${this.family} <br> I am trained: ${this.trainingSkills}</p>
-            </div>`
+            </div>`;
         }        
 }
 
@@ -123,10 +123,21 @@ new Dog ("Bark", 9, "Male", "big", true, "img/bigdog.jpg", "Shiba Inu", "Trained
 
 function sortAnim() {
         animalGroup.sort(function(a, b) {
+        return a.age - b.age});
+        (document.getElementById("row") as HTMLElement).innerHTML = "";
+        printContent();  
+}  ;
+
+// Sorting 2
+
+(document.getElementById("sortanimals") as HTMLElement).addEventListener("click", sortAnimals);
+
+function sortAnimals() {
+        animalGroup.sort(function(a, b) {
         return b.age - a.age});
         (document.getElementById("row") as HTMLElement).innerHTML = "";
         printContent();  
-    }  ;
+}  ;
     
 // Making cards 
 function printContent() {
